@@ -5,13 +5,15 @@ import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/fireb
 
 // Firebase Config (Replace with your own details)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCmmCKb56WnaQUKSD8UDjBLJZ8iBQRLzbg",
+  authDomain: "t-shirt-buisness.firebaseapp.com",
+  projectId: "t-shirt-buisness",
+  storageBucket: "t-shirt-buisness.firebasestorage.app",
+  messagingSenderId: "608217671833",
+  appId: "1:608217671833:web:597c7d4f8bc4c8a7c27008",
+  measurementId: "G-9BMNEB8V1G"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
