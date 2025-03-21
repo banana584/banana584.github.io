@@ -48,7 +48,7 @@ window.handleAuth = async function () {
 
   try {
     // Register user
-    let userCredential = await createUserWithEmailAndPassword(auth, email, pa>
+    let userCredential = await createUserWithEmailAndPassword(auth, email, password);
     let user = userCredential.user;
 
     // Store user info in Firestore
