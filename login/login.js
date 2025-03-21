@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // Import constants from "../utils/constants.js"
-import { x } from "../utils/constants.js"
+import { website_name } from "../utils/constants.js"
 
 // Firebase Config (Replace with your own details)
 const firebaseConfig = {
@@ -35,7 +35,7 @@ isLogin = !isLogin;
 });
 */
 document.getElementById("toggle-form").addEventListener("click", function () {
-  window.location.href = `${x}/register/register.html`
+  window.location.href = `${website_name}/register/register.html`
 
 // Handle Authentication
 window.handleAuth = async function () {
