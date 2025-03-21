@@ -2,6 +2,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// Import constants from "../utils/constants.js"
+import { x } from "../utils/constants.js"
 
 // Firebase Config (Replace with your own details)
 const firebaseConfig = {
@@ -23,6 +25,7 @@ const db = getFirestore(app);
 let isLogin = false; // Toggle between login & register
 
 // Toggle Login/Register Forms
+/*
 document.getElementById("toggle-form").addEventListener("click", function () {
 isLogin = !isLogin;
   document.getElementById("form-title").innerText = isLogin ? "Login" : "Register";
@@ -30,6 +33,9 @@ isLogin = !isLogin;
   document.getElementById("username").style.display = isLogin ? "none" : "block";
   document.querySelector("button").innerText = isLogin ? "Login" : "Register";
 });
+*/
+document.getElementById("toggle-form").addEventListener("click", function () {
+  window.location.href = `${x}/register/register.html`
 
 // Handle Authentication
 window.handleAuth = async function () {
