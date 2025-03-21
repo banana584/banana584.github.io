@@ -31,7 +31,7 @@ document.getElementById("toggle-form").addEventListener("click", function () {
 isLogin = !isLogin;
   document.getElementById("form-title").innerText = isLogin ? "Login" : "Register";
   document.getElementById("toggle-form").innerText = isLogin ? "Don't have an account? Register" : "Already have an account? Login";
-  document.getElementById("username").style.display = isLogin ? "none" : "block";
+  document.getElementById("name").style.display = isLogin ? "none" : "block";
   document.querySelector("button").innerText = isLogin ? "Login" : "Register";
 });
 */
@@ -43,7 +43,7 @@ document.getElementById("toggle-form").addEventListener("click", function () {
 window.handleAuth = async function () {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
-  let username = document.getElementById("name").value;
+  let name = document.getElementById("name").value;
   let message = document.getElementById("message");
 
   try {
@@ -53,7 +53,7 @@ window.handleAuth = async function () {
 
     // Store user info in Firestore
     await setDoc(doc(db, "users", user.uid), {
-      username: username,
+      name: name,
       email: email
     });
 
