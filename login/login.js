@@ -56,6 +56,6 @@ window.handleAuth = async function () {
   } catch (error) {
     message.style.color = "red";
     message.innerText = "Error: " + error.message;
-    console.log("false");
+    console.log(error.message);
   }
 };
