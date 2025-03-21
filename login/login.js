@@ -30,7 +30,7 @@ document.getElementById("toggle-form").addEventListener("click", function () {
 isLogin = !isLogin;
   document.getElementById("form-title").innerText = isLogin ? "Login" : "Register";
   document.getElementById("toggle-form").innerText = isLogin ? "Don't have an account? Register" : "Already have an account? Login";
-  document.getElementById("username").style.display = isLogin ? "none" : "block";
+  document.getElementById("name").style.display = isLogin ? "none" : "block";
   document.querySelector("button").innerText = isLogin ? "Login" : "Register";
 });
 */
@@ -42,7 +42,7 @@ document.getElementById("toggle-form").addEventListener("click", function () {
 window.handleAuth = async function () {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
-  let username = document.getElementById("name").value;
+  let name = document.getElementById("name").value;
   let message = document.getElementById("message");
 
   try {
@@ -51,7 +51,7 @@ window.handleAuth = async function () {
     let user = userCredential.user;
     let userDoc = await getDoc(doc(db, "users", user.uid));
     message.style.color = "green";
-    message.innerText = "Welcome, " + userDoc.data().username + "!";
+    message.innerText = "Welcome, " + userDoc.data().name + "!";
     console.log("true");
   } catch (error) {
     message.style.color = "red";
