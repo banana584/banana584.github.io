@@ -36,6 +36,7 @@ isLogin = !isLogin;
 */
 document.getElementById("toggle-form").addEventListener("click", function () {
   window.location.href = `${website_name}/register/register.html`
+});
 
 // Handle Authentication
 window.handleAuth = async function () {
