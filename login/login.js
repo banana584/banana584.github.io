@@ -52,6 +52,7 @@ window.handleAuth = async function () {
     let userDoc = await getDoc(doc(db, "users", user.uid));
     message.style.color = "green";
     message.innerText = "Welcome, " + userDoc.data().username + "!";
+    console.log("true");
   } catch (error) {
     message.style.color = "red";
     message.innerText = "Error: " + error.message;
