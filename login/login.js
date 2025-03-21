@@ -46,27 +46,12 @@ window.handleAuth = async function () {
   let message = document.getElementById("message");
 
   try {
-    if (isLogin) {
-      // Login user
-      let userCredential = await signInWithEmailAndPassword(auth, email, password);
-      let user = userCredential.user;
-      let userDoc = await getDoc(doc(db, "users", user.uid));
-      message.style.color = "green";
-      message.innerText = "Welcome, " + userDoc.data().username + "!";
-    } else {
-      // Register user
-      let userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      let user = userCredential.user;
-
-      // Store user info in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        username: username,
-        email: email
-      });
-
-      message.style.color = "green";
-      message.innerText = "Registration successful! You can now login.";
-      }
+    // Login user
+    let userCredential = await signInWithEmailAndPassword(auth, email, password);
+    let user = userCredential.user;
+    let userDoc = await getDoc(doc(db, "users", user.uid));
+    message.style.color = "green";
+    message.innerText = "Welcome, " + userDoc.data().username + "!";
   } catch (error) {
     message.style.color = "red";
     message.innerText = "Error: " + error.message;
