@@ -43,7 +43,7 @@ document.getElementById("toggle-form").addEventListener("click", function () {
 window.handleAuth = async function () {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
-  let username = document.getElementById("username").value;
+  let username = document.getElementById("name").value;
   let message = document.getElementById("message");
 
   try {
