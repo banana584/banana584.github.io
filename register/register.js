@@ -5,24 +5,17 @@ import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10
 // Import constants
 import { website_name } from "../utils/constants.js";
 
+console.log("Website Name:", website_name); // Debugging check
+
 // Firebase Config
-
 const firebaseConfig = {
-
   apiKey: "AIzaSyCmmCKb56WnaQUKSD8UDjBLJZ8iBQRLzbg",
-
-  authDomain: "t-shirt-buisness.firebaseapp.com",
-
+  authDomain: "t-shirt-buisness.firebaseapp.com",  // Check spelling!
   projectId: "t-shirt-buisness",
-
   storageBucket: "t-shirt-buisness.appspot.com",
-
   messagingSenderId: "608217671833",
-
   appId: "1:608217671833:web:597c7d4f8bc4c8a7c27008",
-
   measurementId: "G-9BMNEB8V1G"
-
 };
 
 // Initialize Firebase
@@ -30,27 +23,34 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Toggle Login/Register Forms
-document.getElementById("toggle-form").addEventListener("click", function () {
-  window.location.href = `${website_name}/login/login.html`;
-});
+// Toggle Login/Register Forms (Only if the element exists)
+let toggleForm = document.getElementById("toggle-form");
+if (toggleForm) {
+  toggleForm.addEventListener("click", function () {
+    window.location.href = `${website_name}/login/login.html`;
+  });
+}
 
 // Handle Registration
 window.handleAuth = async function () {
-  let email = document.getElementById("email").value.trim();
-  let password = document.getElementById("password").value.trim();
-  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email")?.value.trim();
+  let password = document.getElementById("password")?.value.trim();
+  let name = document.getElementById("name")?.value.trim();
   let message = document.getElementById("message");
 
   if (!email || !password || !name) {
-    message.style.color = "red";
-    message.innerText = "Please fill in all fields.";
+    if (message) {
+      message.style.color = "red";
+      message.innerText = "Please fill in all fields.";
+    }
     return;
   }
 
   if (password.length < 6) {
-    message.style.color = "red";
-    message.innerText = "Password must be at least 6 characters long.";
+    if (message) {
+      message.style.color = "red";
+      message.innerText = "Password must be at least 6 characters long.";
+    }
     return;
   }
 
@@ -65,16 +65,20 @@ window.handleAuth = async function () {
       email: email
     });
 
-    message.style.color = "green";
-    message.innerText = "Registration successful! Redirecting to login...";
-    
+    if (message) {
+      message.style.color = "green";
+      message.innerText = "Registration successful! Redirecting to login...";
+    }
+
     // Redirect to login page after successful registration
     setTimeout(() => {
       window.location.href = `${website_name}/login/login.html`;
     }, 2000);
   } catch (error) {
-    message.style.color = "red";
-    message.innerText = "Error: " + error.message;
+    if (message) {
+      message.style.color = "red";
+      message.innerText = "Error: " + error.message;
+    }
     console.error("Firebase Auth Error:", error.code, error.message);
   }
 };
