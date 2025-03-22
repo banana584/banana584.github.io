@@ -46,6 +46,12 @@ window.handleAuth = async function () {
   let name = document.getElementById("name").value;
   let message = document.getElementById("message");
 
+  if (!email || !password || !name) {
+    message.style.color = "red";
+    message.innerText = "Please fill in all fields.";
+    return;
+  }
+
   try {
     // Register user
     let userCredential = await createUserWithEmailAndPassword(auth, email, password);
