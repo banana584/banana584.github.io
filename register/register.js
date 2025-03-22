@@ -55,7 +55,7 @@ window.handleAuth = async function () {
   }
 
   try {
-    // Register user
+    // Register user using Firebase Authentication SDK
     let userCredential = await createUserWithEmailAndPassword(auth, email, password);
     let user = userCredential.user;
 
