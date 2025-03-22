@@ -1,12 +1,11 @@
 // Import Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-// Import constants from "../utils/constants.js"
-import { website_name } from "../utils/constants.js"
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// Import constants
+import { website_name } from "../utils/constants.js";
 
-
-// Firebase Config (Replace with your own details)
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyCmmCKb56WnaQUKSD8UDjBLJZ8iBQRLzbg",
   authDomain: "t-shirt-buisness.firebaseapp.com",
@@ -17,38 +16,32 @@ const firebaseConfig = {
   measurementId: "G-9BMNEB8V1G"
 };
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-let isLogin = false; // Toggle between login & register
-
 // Toggle Login/Register Forms
-/*
 document.getElementById("toggle-form").addEventListener("click", function () {
-isLogin = !isLogin;
-  document.getElementById("form-title").innerText = isLogin ? "Login" : "Register";
-  document.getElementById("toggle-form").innerText = isLogin ? "Don't have an account? Register" : "Already have an account? Login";
-  document.getElementById("name").style.display = isLogin ? "none" : "block";
-  document.querySelector("button").innerText = isLogin ? "Login" : "Register";
-});
-*/
-document.getElementById("toggle-form").addEventListener("click", function () {
-  window.location.href = `${website_name}/login/login.html`
+  window.location.href = `${website_name}/login/login.html`;
 });
 
-// Handle Authentication
+// Handle Registration
 window.handleAuth = async function () {
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
-  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value.trim();
+  let password = document.getElementById("password").value.trim();
+  let name = document.getElementById("name").value.trim();
   let message = document.getElementById("message");
 
   if (!email || !password || !name) {
     message.style.color = "red";
     message.innerText = "Please fill in all fields.";
+    return;
+  }
+
+  if (password.length < 6) {
+    message.style.color = "red";
+    message.innerText = "Password must be at least 6 characters long.";
     return;
   }
 
@@ -64,10 +57,15 @@ window.handleAuth = async function () {
     });
 
     message.style.color = "green";
-    message.innerText = "Registration successful! You can now login.";
+    message.innerText = "Registration successful! Redirecting to login...";
+    
+    // Redirect to login page after successful registration
+    setTimeout(() => {
+      window.location.href = `${website_name}/login/login.html`;
+    }, 2000);
   } catch (error) {
     message.style.color = "red";
     message.innerText = "Error: " + error.message;
-    console.log(error.message);
+    console.error("Firebase Auth Error:", error.code, error.message);
   }
 };
