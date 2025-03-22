@@ -11,7 +11,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyCmmCKb56WnaQUKSD8UDjBLJZ8iBQRLzbg",
   authDomain: "t-shirt-buisness.firebaseapp.com",
   projectId: "t-shirt-buisness",
-  storageBucket: "t-shirt-buisness.firebasestorage.app",
+  storageBucket: "t-shirt-buisness.appspot.com",
   messagingSenderId: "608217671833",
   appId: "1:608217671833:web:597c7d4f8bc4c8a7c27008",
   measurementId: "G-9BMNEB8V1G"
