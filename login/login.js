@@ -65,6 +65,12 @@ window.handleAuth = async function () {
   let name = document.getElementById("name").value;
   let message = document.getElementById("message");
 
+  if (!email || !password) {
+    message.style.color = "red";
+    message.innerText = "Please enter both email and password.";
+    return;
+  }
+
   try {
     // Login user
     let userCredential = await signInWithEmailAndPassword(auth, email, password);
