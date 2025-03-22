@@ -26,7 +26,7 @@ const firebaseConfig = {
 
   projectId: "t-shirt-buisness",
 
-  storageBucket: "t-shirt-buisness.firebasestorage.app",
+  storageBucket: "t-shirt-buisness.appspot.com",
 
   messagingSenderId: "608217671833",
 
