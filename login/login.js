@@ -75,6 +75,7 @@ window.handleAuth = async function () {
     // Login user
     let userCredential = await signInWithEmailAndPassword(auth, email, password);
     let user = userCredential.user;
+    console.log(user.uid);
     let userDoc = await getDoc(doc(db, "users", user.uid));
     if (!userDoc.exists()) {
       throw new Error("User doc does not exist");
