@@ -6,14 +6,23 @@ import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10
 import { website_name } from "../utils/constants.js";
 
 // Firebase Config
+
 const firebaseConfig = {
+
   apiKey: "AIzaSyCmmCKb56WnaQUKSD8UDjBLJZ8iBQRLzbg",
+
   authDomain: "t-shirt-buisness.firebaseapp.com",
+
   projectId: "t-shirt-buisness",
+
   storageBucket: "t-shirt-buisness.appspot.com",
+
   messagingSenderId: "608217671833",
+
   appId: "1:608217671833:web:597c7d4f8bc4c8a7c27008",
+
   measurementId: "G-9BMNEB8V1G"
+
 };
 
 // Initialize Firebase
