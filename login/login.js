@@ -77,8 +77,7 @@ window.handleAuth = async function () {
     let user = userCredential.user;
     let userDoc = await getDoc(doc(db, "users", user.uid));
     if (!userDoc.exists()) {
-      console.log("User doc does not exist");
-      break;
+      throw new Error("User doc does not exist");
     }
     message.style.color = "green";
     message.innerText = "Welcome, " + userDoc.data().name + "!";
